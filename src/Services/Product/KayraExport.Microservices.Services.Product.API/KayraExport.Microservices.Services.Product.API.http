@@ -1,0 +1,6 @@
+@KayraExport.Microservices.Services.Product.API_HostAddress = http://localhost:5144
+
+GET {{KayraExport.Microservices.Services.Product.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

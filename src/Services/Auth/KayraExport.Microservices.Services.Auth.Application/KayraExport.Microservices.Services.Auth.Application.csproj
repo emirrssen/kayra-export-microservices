@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\BuildingBlocks\KayraExport.Microservices.BuildingBlocks.Shared.Core\KayraExport.Microservices.BuildingBlocks.Shared.Core.csproj" />
+    <ProjectReference Include="..\KayraExport.Microservices.Services.Auth.Domain\KayraExport.Microservices.Services.Auth.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

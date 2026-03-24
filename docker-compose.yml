@@ -1,0 +1,61 @@
+services:
+  kayra_postgres:
+    container_name: kayra_postgres
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_USER: kayra_admin
+      POSTGRES_PASSWORD: kayra_password
+      POSTGRES_DB: KayraProductDb
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - kayra_network
+    restart: unless-stopped
+  kayra_redis:
+    container_name: kayra_redis
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - kayra_network
+    restart: unless-stopped
+  kayra_rabbitmq:
+    container_name: kayra_rabbitmq
+    image: rabbitmq:3-management-alpine
+    environment:
+      RABBITMQ_DEFAULT_USER: kayra_rmq
+      RABBITMQ_DEFAULT_PASS: kayra_rmq_pass
+    ports:
+      - "5672:5672"   
+      - "15672:15672"
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+    networks:
+      - kayra_network
+    restart: unless-stopped
+  kayra_seq:
+    container_name: kayra_seq
+    image: datalust/seq:latest
+    environment:
+      ACCEPT_EULA: "Y"
+    ports:
+      - "5341:80"
+    volumes:
+      - seq_data:/data
+    networks:
+      - kayra_network
+    restart: unless-stopped
+
+networks:
+  kayra_network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+  redis_data:
+  rabbitmq_data:
+  seq_data:
