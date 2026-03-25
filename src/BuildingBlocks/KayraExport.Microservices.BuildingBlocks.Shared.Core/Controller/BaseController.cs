@@ -1,10 +1,10 @@
-﻿using KayraExport.Microservices.BuildingBlocks.Shared.Core.Response;
+﻿using KayraExport.Microservices.BuildingBlocks.Shared.Domain.Response;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
-namespace KayraExport.Microservices.BuildingBlocks.Shared.Core.Controller
+namespace KayraExport.Microservices.BuildingBlocks.Shared.Application.Controller
 {
     [ApiController]
     public class BaseController(IMediator mediator) : ControllerBase

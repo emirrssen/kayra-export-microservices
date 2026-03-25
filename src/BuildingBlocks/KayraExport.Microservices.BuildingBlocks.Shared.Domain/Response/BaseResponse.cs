@@ -1,7 +1,7 @@
 ﻿using System.Net;
 using System.Text.Json.Serialization;
 
-namespace KayraExport.Microservices.BuildingBlocks.Shared.Core.Response
+namespace KayraExport.Microservices.BuildingBlocks.Shared.Domain.Response
 {
     /// <summary>
     /// Uygulama genelinde kullanılan temel response modelidir. 

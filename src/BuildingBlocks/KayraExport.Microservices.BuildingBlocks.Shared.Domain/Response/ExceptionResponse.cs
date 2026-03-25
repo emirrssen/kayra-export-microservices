@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.Net;
 
-namespace KayraExport.Microservices.BuildingBlocks.Shared.Core.Response
+namespace KayraExport.Microservices.BuildingBlocks.Shared.Domain.Response
 {
     /// <summary>
     /// Sistemsel hataları standart bir formatta geri dönülmesini sağlayan response modelidir.

@@ -1,7 +1,7 @@
-﻿using KayraExport.Microservices.BuildingBlocks.Shared.Core.Entities.Common;
+﻿using KayraExport.Microservices.BuildingBlocks.Shared.Domain.Entities.Common;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace KayraExport.Microservices.BuildingBlocks.Shared.Core.Entities
+namespace KayraExport.Microservices.BuildingBlocks.Shared.Domain.Entities
 {
     /// <summary>
     /// Postgresql entity'lerinde standart kullanılan field değerlerini getirmek için kullanılır.

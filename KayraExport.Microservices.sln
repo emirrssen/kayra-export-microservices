@@ -19,7 +19,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Product", "Product", "{363E
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KayraExport.Microservices.Services.Auth.Domain", "src\Services\Auth\KayraExport.Microservices.Services.Auth.Domain\KayraExport.Microservices.Services.Auth.Domain.csproj", "{600588CE-E1E2-42EE-9CE1-BD39EE3BB130}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KayraExport.Microservices.BuildingBlocks.Shared.Core", "src\BuildingBlocks\KayraExport.Microservices.BuildingBlocks.Shared.Core\KayraExport.Microservices.BuildingBlocks.Shared.Core.csproj", "{EB612F4C-CCA3-4498-9E23-402C916023FB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KayraExport.Microservices.BuildingBlocks.Shared.Application", "src\BuildingBlocks\KayraExport.Microservices.BuildingBlocks.Shared.Core\KayraExport.Microservices.BuildingBlocks.Shared.Application.csproj", "{EB612F4C-CCA3-4498-9E23-402C916023FB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KayraExport.Microservices.Gateway.API_Gateway", "src\Gateway\KayraExport.Microservices.Gateway.API_Gateway\KayraExport.Microservices.Gateway.API_Gateway.csproj", "{A3B48E70-3C98-4A2A-A143-76249FA1FE40}"
 EndProject
@@ -42,6 +42,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KayraExport.Microservices.Services.Log.Infrastructure", "src\Services\Log\KayraExport.Microservices.Services.Log.Infrastructure\KayraExport.Microservices.Services.Log.Infrastructure.csproj", "{82A38E91-6137-4279-975A-BD1E24B10ED4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KayraExport.Microservices.Services.Log.API", "src\Services\Log\KayraExport.Microservices.Services.Log.API\KayraExport.Microservices.Services.Log.API.csproj", "{EBA1DC14-7408-4F35-84B4-2E3885A97BFB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KayraExport.Microservices.BuildingBlocks.Shared.Domain", "src\BuildingBlocks\KayraExport.Microservices.BuildingBlocks.Shared.Domain\KayraExport.Microservices.BuildingBlocks.Shared.Domain.csproj", "{A059FFF9-4A4A-49EB-AFC2-7B5C3F2F5912}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -101,6 +103,10 @@ Global
 		{EBA1DC14-7408-4F35-84B4-2E3885A97BFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EBA1DC14-7408-4F35-84B4-2E3885A97BFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EBA1DC14-7408-4F35-84B4-2E3885A97BFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A059FFF9-4A4A-49EB-AFC2-7B5C3F2F5912}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A059FFF9-4A4A-49EB-AFC2-7B5C3F2F5912}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A059FFF9-4A4A-49EB-AFC2-7B5C3F2F5912}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A059FFF9-4A4A-49EB-AFC2-7B5C3F2F5912}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -125,6 +131,7 @@ Global
 		{B3EFDD05-6396-44E2-8341-E3960561898C} = {09855581-4E34-4902-98CA-151A7083F0F1}
 		{82A38E91-6137-4279-975A-BD1E24B10ED4} = {09855581-4E34-4902-98CA-151A7083F0F1}
 		{EBA1DC14-7408-4F35-84B4-2E3885A97BFB} = {09855581-4E34-4902-98CA-151A7083F0F1}
+		{A059FFF9-4A4A-49EB-AFC2-7B5C3F2F5912} = {74EFCFE1-4DA3-4EF5-8EEE-C13259578F8D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {14F3905A-F730-43B6-B69B-18765F609BB2}

@@ -1,7 +1,7 @@
-﻿using KayraExport.Microservices.BuildingBlocks.Shared.Core.Response;
+﻿using KayraExport.Microservices.BuildingBlocks.Shared.Domain.Response;
 using System.Net;
 
-namespace KayraExport.Microservices.BuildingBlocks.Shared.Core.Factories
+namespace KayraExport.Microservices.BuildingBlocks.Shared.Application.Factories
 {
     /// <summary>
     /// Tüm mikroservislerde kullanılacak olan temel response modellerinin pratik bir şekilde oluşturulmasını amaçlar.

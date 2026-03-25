@@ -1,6 +1,6 @@
 ﻿using System.Net;
 
-namespace KayraExport.Microservices.BuildingBlocks.Shared.Core.Response
+namespace KayraExport.Microservices.BuildingBlocks.Shared.Domain.Response
 {
     /// <summary>
     /// Uygulama genelinde kullanılan ve veri taşıyan generic response modeldir.

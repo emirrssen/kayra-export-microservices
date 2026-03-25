@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
-using KayraExport.Microservices.BuildingBlocks.Shared.Core.Abstraction.MediatR;
+using KayraExport.Microservices.BuildingBlocks.Shared.Application.Abstraction.MediatR;
 
-namespace KayraExport.Microservices.BuildingBlocks.Shared.Core.Abstraction.FluentValidation
+namespace KayraExport.Microservices.BuildingBlocks.Shared.Application.Abstraction.FluentValidation
 {
     /// <summary>
     /// Tüm projede kullanılan validator'leri soyutlayan sınıftır. Yalnıcza proje bazında 

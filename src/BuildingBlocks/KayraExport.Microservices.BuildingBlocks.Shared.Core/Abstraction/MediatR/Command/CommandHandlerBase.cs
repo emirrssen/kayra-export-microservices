@@ -1,8 +1,8 @@
-﻿using KayraExport.Microservices.BuildingBlocks.Shared.Core.Factories;
-using KayraExport.Microservices.BuildingBlocks.Shared.Core.Response;
+﻿using KayraExport.Microservices.BuildingBlocks.Shared.Application.Factories;
+using KayraExport.Microservices.BuildingBlocks.Shared.Domain.Response;
 using MediatR;
 
-namespace KayraExport.Microservices.BuildingBlocks.Shared.Core.Abstraction.MediatR.Command
+namespace KayraExport.Microservices.BuildingBlocks.Shared.Application.Abstraction.MediatR.Command
 {
     /// <summary>
     /// Tüm projelerde kullanılan command handler'ları soyutlayan sınıftır.

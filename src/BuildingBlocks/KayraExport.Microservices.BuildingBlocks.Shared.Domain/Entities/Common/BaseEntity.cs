@@ -1,4 +1,4 @@
-﻿namespace KayraExport.Microservices.BuildingBlocks.Shared.Core.Entities.Common
+﻿namespace KayraExport.Microservices.BuildingBlocks.Shared.Domain.Entities.Common
 {
     /// <summary>
     /// Farklı Db türleri entity'lerini imzalamak için kullanılır.

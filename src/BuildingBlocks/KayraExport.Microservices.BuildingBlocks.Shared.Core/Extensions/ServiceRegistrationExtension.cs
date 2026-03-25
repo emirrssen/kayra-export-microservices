@@ -2,7 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
-namespace KayraExport.Microservices.BuildingBlocks.Shared.Core.Extensions
+namespace KayraExport.Microservices.BuildingBlocks.Shared.Application.Extensions
 {
     public static class ServiceRegistrationExtension
     {
