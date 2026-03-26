@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="BCrypt.Net-Next" Version="4.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\..\BuildingBlocks\KayraExport.Microservices.BuildingBlocks.Shared.Core\KayraExport.Microservices.BuildingBlocks.Shared.Application.csproj" />
     <ProjectReference Include="..\KayraExport.Microservices.Services.Auth.Domain\KayraExport.Microservices.Services.Auth.Domain.csproj" />
   </ItemGroup>

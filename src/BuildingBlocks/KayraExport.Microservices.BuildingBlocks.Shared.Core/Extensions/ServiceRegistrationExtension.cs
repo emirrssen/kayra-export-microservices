@@ -1,4 +1,6 @@
 ﻿using FluentValidation;
+using KayraExport.Microservices.BuildingBlocks.Shared.Application.Pipelines;
+using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
@@ -18,6 +20,8 @@ namespace KayraExport.Microservices.BuildingBlocks.Shared.Application.Extensions
 
             // Fluent validation'ın çağırıldığı projede eklenmesini sağlar.
             services.AddValidatorsFromAssembly(assembly);
+
+            services.AddScoped(typeof(IPipelineBehavior<,>), typeof(FluentValidationPipeline<,>));
         }
     }
 }

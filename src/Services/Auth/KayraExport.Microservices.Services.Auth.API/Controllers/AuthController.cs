@@ -1,0 +1,16 @@
+﻿using KayraExport.Microservices.BuildingBlocks.Shared.Application.Controller;
+using MediatR;
+using Microsoft.AspNetCore.Mvc;
+
+using Commands = KayraExport.Microservices.Services.Auth.Application.CQRS.Auth.Commands;
+
+namespace KayraExport.Microservices.Services.Auth.API.Controllers
+{
+    [Route("api/auth-service/auth")]
+    public class AuthController(IMediator mediator) : BaseController(mediator)
+    {
+        [HttpPost("register")]
+        public async Task<IActionResult> RegisterAsync([FromBody] Commands.Register.Command command)
+            => await ExecuteAsync(command);
+    }
+}
