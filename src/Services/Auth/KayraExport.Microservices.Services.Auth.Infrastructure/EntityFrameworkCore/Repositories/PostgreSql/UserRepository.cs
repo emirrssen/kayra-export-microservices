@@ -21,12 +21,13 @@ namespace KayraExport.Microservices.Services.Auth.Infrastructure.EntityFramework
             query.AsNoTrackingWithIdentityResolution();
 
             return await query.FirstOrDefaultAsync(x => 
-                x.EmailAddress == email &&
-                x.Username == userName &&
+                (x.EmailAddress == email ||
+                x.Username == userName) &&
                 x.DeletedAt == null
             );
         }
 
         public async Task InsertAsync(User user) => await Users.AddAsync(user);
+        public async Task UpdateAsync(User user) => await Task.FromResult(Users.Update(user));
     }
 }

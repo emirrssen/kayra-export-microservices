@@ -1,4 +1,5 @@
 ﻿using KayraExport.Microservices.BuildingBlocks.Shared.Domain.Entities;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace KayraExport.Microservices.Services.Auth.Domain.Entities
 {
@@ -10,5 +11,6 @@ namespace KayraExport.Microservices.Services.Auth.Domain.Entities
         public string EmailAddress { get; set; } = string.Empty;
         public string PasswordHash { get; set; } = string.Empty;
         public string? RefreshToken { get; set; }
+        [Column(TypeName = "timestamp without time zone")] public DateTime? RefreshTokenExpiresAt { get; set; }
     }
 }

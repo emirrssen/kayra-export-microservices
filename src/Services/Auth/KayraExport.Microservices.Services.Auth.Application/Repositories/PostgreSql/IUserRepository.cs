@@ -6,5 +6,6 @@ namespace KayraExport.Microservices.Services.Auth.Application.Repositories.Postg
     {
         Task<User?> GetByEmailOrUsernameAsync(string email, string userName);
         Task InsertAsync(User user);
+        Task UpdateAsync(User user);
     }
 }

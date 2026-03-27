@@ -12,5 +12,9 @@ namespace KayraExport.Microservices.Services.Auth.API.Controllers
         [HttpPost("register")]
         public async Task<IActionResult> RegisterAsync([FromBody] Commands.Register.Command command)
             => await ExecuteAsync(command);
+
+        [HttpPost("login")]
+        public async Task<IActionResult> LoginAsync([FromBody] Commands.Login.Command command)
+            => await ExecuteAsync(command);
     }
 }
