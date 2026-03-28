@@ -1,3 +1,5 @@
+using KayraExport.Microservices.BuildingBlocks.Shared.Application.Extensions;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
@@ -13,5 +15,7 @@ if (app.Environment.IsDevelopment())
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseGlobalErrorHandlerMiddleware();
 
 app.Run();

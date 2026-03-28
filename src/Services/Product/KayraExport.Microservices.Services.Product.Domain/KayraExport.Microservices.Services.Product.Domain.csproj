@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\BuildingBlocks\KayraExport.Microservices.BuildingBlocks.Shared.Domain\KayraExport.Microservices.BuildingBlocks.Shared.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

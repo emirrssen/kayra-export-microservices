@@ -1,8 +1,8 @@
 ﻿using KayraExport.Microservices.BuildingBlocks.Shared.Application.Abstraction.MediatR.Command;
+using KayraExport.Microservices.BuildingBlocks.Shared.Application.Services.Abstract;
 using KayraExport.Microservices.BuildingBlocks.Shared.Domain.Response;
 using KayraExport.Microservices.Services.Auth.Application.Helpers;
 using KayraExport.Microservices.Services.Auth.Application.Repositories.PostgreSql;
-using KayraExport.Microservices.Services.Auth.Application.Services.Abstracts;
 using KayraExport.Microservices.Services.Auth.Domain.Entities;
 
 namespace KayraExport.Microservices.Services.Auth.Application.CQRS.Auth.Commands.Register;

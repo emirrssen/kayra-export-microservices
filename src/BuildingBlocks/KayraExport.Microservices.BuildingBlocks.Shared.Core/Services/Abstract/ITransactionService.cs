@@ -1,4 +1,4 @@
-﻿namespace KayraExport.Microservices.Services.Auth.Application.Services.Abstracts
+﻿namespace KayraExport.Microservices.BuildingBlocks.Shared.Application.Services.Abstract
 {
     public interface ITransactionService
     {

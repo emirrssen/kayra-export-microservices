@@ -1,8 +1,9 @@
-﻿using KayraExport.Microservices.Services.Auth.Application.Services.Abstracts;
+﻿using KayraExport.Microservices.BuildingBlocks.Shared.Application.Services.Abstract;
+using Microsoft.EntityFrameworkCore;
 
-namespace KayraExport.Microservices.Services.Auth.Infrastructure.EntityFrameworkCore.Transaction
+namespace KayraExport.Microservices.BuildingBlocks.Shared.Application.Services.Concrete
 {
-    public sealed class TransactionService(AuthDbContext context) : ITransactionService
+    public sealed class TransactionService(DbContext context) : ITransactionService
     {
         public async Task BeginTransactionAsync()
         {
