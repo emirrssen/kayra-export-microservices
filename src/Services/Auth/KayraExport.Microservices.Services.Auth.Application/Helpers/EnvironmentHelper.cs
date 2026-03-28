@@ -40,6 +40,6 @@
         /// <summary>
         /// PostgreSql bağlantısının yapılabilmesi için connection string değeridir.
         /// </summary>
-        public static string PostgreSqlConnectionString => GetEnvVariable("AUTH_POSTGRESQL_CNN");
+        public static string PostgreSqlConnectionString => GetEnvVariable("KAYRA_POSTGRESQL_CNN");
     }
 }

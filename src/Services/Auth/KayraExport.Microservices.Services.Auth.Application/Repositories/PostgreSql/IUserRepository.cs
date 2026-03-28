@@ -2,7 +2,7 @@
 
 namespace KayraExport.Microservices.Services.Auth.Application.Repositories.PostgreSql
 {
-    public interface IUserRepository : IRepository
+    public interface IUserRepository
     {
         Task<User?> GetByEmailOrUsernameAsync(string email, string userName);
         Task<User?> GetByRefreshTokenAsync(string refreshToken);

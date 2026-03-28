@@ -1,9 +1,11 @@
 using KayraExport.Microservices.BuildingBlocks.Shared.Application.Extensions;
+using KayraExport.Microservices.Services.Product.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddOpenApi();
+builder.Services.AddInfrastructureServices();
 
 var app = builder.Build();
 
