@@ -5,6 +5,7 @@ namespace KayraExport.Microservices.Services.Auth.Application.Repositories.Postg
     public interface IUserRepository : IRepository
     {
         Task<User?> GetByEmailOrUsernameAsync(string email, string userName);
+        Task<User?> GetByRefreshTokenAsync(string refreshToken);
         Task InsertAsync(User user);
         Task UpdateAsync(User user);
     }

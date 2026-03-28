@@ -16,5 +16,9 @@ namespace KayraExport.Microservices.Services.Auth.API.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> LoginAsync([FromBody] Commands.Login.Command command)
             => await ExecuteAsync(command);
+
+        [HttpPost("refresh")]
+        public async Task<IActionResult> RefreshAsync([FromBody] Commands.Refresh.Command command)
+            => await ExecuteAsync(command);
     }
 }

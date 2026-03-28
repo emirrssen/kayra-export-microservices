@@ -29,5 +29,16 @@ namespace KayraExport.Microservices.Services.Auth.Infrastructure.EntityFramework
 
         public async Task InsertAsync(User user) => await Users.AddAsync(user);
         public async Task UpdateAsync(User user) => await Task.FromResult(Users.Update(user));
+
+        public async Task<User?> GetByRefreshTokenAsync(string refreshToken)
+        {
+            var query = Users.AsQueryable();
+            query.AsNoTrackingWithIdentityResolution();
+
+            return await query.FirstOrDefaultAsync(x =>
+                x.RefreshToken == refreshToken &&
+                x.DeletedAt == null
+            );
+        }
     }
 }
