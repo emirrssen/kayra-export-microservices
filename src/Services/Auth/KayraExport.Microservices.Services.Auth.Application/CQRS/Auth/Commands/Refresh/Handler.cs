@@ -1,17 +1,22 @@
 ﻿using KayraExport.Microservices.BuildingBlocks.Shared.Application.Abstraction.MediatR.Command;
+using KayraExport.Microservices.BuildingBlocks.Shared.Application.Events;
 using KayraExport.Microservices.BuildingBlocks.Shared.Application.Helpers;
 using KayraExport.Microservices.BuildingBlocks.Shared.Application.Services.Abstract;
+using KayraExport.Microservices.BuildingBlocks.Shared.Domain.Consts;
+using KayraExport.Microservices.BuildingBlocks.Shared.Domain.Enums;
 using KayraExport.Microservices.BuildingBlocks.Shared.Domain.Response;
 using KayraExport.Microservices.Services.Auth.Application.Helpers;
 using KayraExport.Microservices.Services.Auth.Application.Repositories.PostgreSql;
 using KayraExport.Microservices.Services.Auth.Application.Services.Abstracts;
+using Rebus.Bus;
 
 namespace KayraExport.Microservices.Services.Auth.Application.CQRS.Auth.Commands.Refresh;
 
 public class Handler(
     ITransactionService transactionService,
     IUserRepository userRepository,
-    ITokenService tokenService
+    ITokenService tokenService,
+    IBus bus
 ) : CommandHandlerBase<Command, Response>
 {
     public override async Task<DataResponse<Response>> Handle(Command request, CancellationToken cancellationToken)
@@ -52,7 +57,15 @@ public class Handler(
         }
         catch (Exception ex)
         {
-            // TODO -> Bu kısmı logla.
+            await bus.Send(new LogMessageEvent
+            {
+                CreatedAt = DateTimeHelper.GetNowByTurkiyeTimeZone(),
+                ExceptionDetails = ex.Message,
+                Message = "Oturum yenilenirken beklenmeyen bir hata meydana geldi",
+                LogLevel = LogLevelEnum.Error,
+                ServiceName = LogServiceNameConst.AuthService
+            });            
+
             return BadRequestResponse("Oturum yenilenirken beklenmeyen bir hata meydana geldi.");
         }
     }

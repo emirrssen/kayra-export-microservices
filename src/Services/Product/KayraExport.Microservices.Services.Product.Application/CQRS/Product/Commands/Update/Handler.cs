@@ -13,32 +13,24 @@ public class Handler(
 {
     public override async Task<BaseResponse> Handle(Command request, CancellationToken cancellationToken)
     {
-        try
+        var product = await productRepository.GetByIdAsync(request.Id);
+        if (product == null)
+            return BadRequestResponse("Güncellenmek istenen ürün bulunamadı");
+
+        await transactionService.BeginTransactionAsync();
+
+        product.Update(request.Name, request.Description, request.Price, request.StockQuantity);
+        product.UpdatedAt = DateTimeHelper.GetNowByTurkiyeTimeZone();
+        await productRepository.UpdateAsync(product);
+
+        var affectedRows = await transactionService.SaveChangesAsync();
+        if (affectedRows != 1)
         {
-            var product = await productRepository.GetByIdAsync(request.Id);
-            if (product == null)
-                return BadRequestResponse("Güncellenmek istenen ürün bulunamadı");
-
-            await transactionService.BeginTransactionAsync();
-
-            product.Update(request.Name, request.Description, request.Price, request.StockQuantity);
-            product.UpdatedAt = DateTimeHelper.GetNowByTurkiyeTimeZone();
-            await productRepository.UpdateAsync(product);
-
-            var affectedRows = await transactionService.SaveChangesAsync();
-            if (affectedRows != 1)
-            {
-                await transactionService.RollbackTransactionAsync();
-                return BadRequestResponse("Ürün güncellenemedi");
-            }
-
-            await transactionService.CommitTransactionAsync();
-            return OkResponse();
+            await transactionService.RollbackTransactionAsync();
+            return BadRequestResponse("Ürün güncellenemedi");
         }
-        catch (Exception ex)
-        {
-            // TODO -> log ex
-            return BadRequestResponse("Beklenmeyen bir hata meydana geldi");
-        }
+
+        await transactionService.CommitTransactionAsync();
+        return OkResponse();
     }
 }

@@ -5,8 +5,6 @@
         public static string GetEnvVariable(string name)
                 => Environment.GetEnvironmentVariable(name) ?? "";
 
-        // JWT Configurations
-
         /// <summary>
         /// JWT tokenlarını oluşturan yetkili sistem veya uygulama adı.
         /// Environment Variable: JWT_ISSUER
@@ -41,5 +39,10 @@
         /// PostgreSql bağlantısının yapılabilmesi için connection string değeridir.
         /// </summary>
         public static string PostgreSqlConnectionString => GetEnvVariable("KAYRA_POSTGRESQL_CNN");
+
+        /// <summary>
+        /// RabbitMq bağlantısının yapılabilmesi için connection string değeridir.
+        /// </summary>
+        public static string RabbitMqConnectionString => GetEnvVariable("KAYRA_RABBITMQ_CNN");
     }
 }

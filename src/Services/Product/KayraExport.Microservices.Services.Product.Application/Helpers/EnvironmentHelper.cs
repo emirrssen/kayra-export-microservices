@@ -27,5 +27,10 @@
         /// Environment Variable: JWT_SECURITY_KEY
         /// </summary>
         public static string JwtSecurityKey => GetEnvVariable("KAYRA_JWT_SECURITY_KEY");
+
+        /// <summary>
+        /// RabbitMq bağlantısının yapılabilmesi için connection string değeridir.
+        /// </summary>
+        public static string RabbitMqConnectionString => GetEnvVariable("KAYRA_RABBITMQ_CNN");
     }
 }

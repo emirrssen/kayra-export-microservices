@@ -12,33 +12,25 @@ public class Handler(
 {
     public override async Task<BaseResponse> Handle(Command request, CancellationToken cancellationToken)
     {
-        try
+        await transactionService.BeginTransactionAsync();
+
+        Domain.Entities.Product product = new(
+            request.Name,
+            request.Description,
+            request.Price,
+            request.StockQuantity
+        );
+
+        await productRepository.InsertAsync(product);
+
+        var affectedRows = await transactionService.SaveChangesAsync();
+        if (affectedRows != 1)
         {
-            await transactionService.BeginTransactionAsync();
-
-            Domain.Entities.Product product = new(
-                request.Name,
-                request.Description,
-                request.Price,
-                request.StockQuantity
-            );
-
-            await productRepository.InsertAsync(product);
-
-            var affectedRows = await transactionService.SaveChangesAsync();
-            if (affectedRows != 1)
-            {
-                await transactionService.RollbackTransactionAsync();
-                return BadRequestResponse("Ürün kaydedilemedi");
-            }
-
-            await transactionService.CommitTransactionAsync();
-            return CreatedResponse();
+            await transactionService.RollbackTransactionAsync();
+            return BadRequestResponse("Ürün kaydedilemedi");
         }
-        catch (Exception ex)
-        {
-            // TODO -> log ex
-            return BadRequestResponse("Beklenmeyen bir hata meydana geldi");
-        }
+
+        await transactionService.CommitTransactionAsync();
+        return CreatedResponse();
     }
 }

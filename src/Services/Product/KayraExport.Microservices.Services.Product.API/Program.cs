@@ -1,5 +1,6 @@
 using KayraExport.Microservices.BuildingBlocks.Shared.Application.Extensions;
-using KayraExport.Microservices.Services.Product.Application.Helpers;
+using KayraExport.Microservices.BuildingBlocks.Shared.Domain.Consts;
+using KayraExport.Microservices.Services.Product.Application;
 using KayraExport.Microservices.Services.Product.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,12 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 builder.Services.AddInfrastructureServices();
-builder.Services.AddJwtAuthentication(x =>
-{
-    x.Issuer = EnvironmentHelper.JwtIssuer;
-    x.Audience = EnvironmentHelper.JwtAudience;
-    x.SecurityKey = EnvironmentHelper.JwtSecurityKey;
-});
+builder.Services.AddApplicationServices();
 
 var app = builder.Build();
 
@@ -27,6 +23,6 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.UseGlobalErrorHandlerMiddleware();
+app.UseGlobalErrorHandlerMiddleware(LogServiceNameConst.ProductService);
 
 app.Run();

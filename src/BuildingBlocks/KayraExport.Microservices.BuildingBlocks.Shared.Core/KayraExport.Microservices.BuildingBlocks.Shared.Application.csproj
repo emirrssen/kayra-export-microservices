@@ -13,6 +13,8 @@
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="9.0.2" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.3.9" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+    <PackageReference Include="Rebus.RabbitMq" Version="10.1.1" />
+    <PackageReference Include="Rebus.ServiceProvider" Version="10.7.2" />
   </ItemGroup>
 
   <ItemGroup>

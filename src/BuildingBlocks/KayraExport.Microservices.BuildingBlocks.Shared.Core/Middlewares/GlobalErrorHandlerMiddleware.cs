@@ -1,14 +1,18 @@
-﻿using KayraExport.Microservices.BuildingBlocks.Shared.Domain.Exceptions;
+using KayraExport.Microservices.BuildingBlocks.Shared.Application.Events;
+using KayraExport.Microservices.BuildingBlocks.Shared.Application.Helpers;
+using KayraExport.Microservices.BuildingBlocks.Shared.Domain.Enums;
+using KayraExport.Microservices.BuildingBlocks.Shared.Domain.Exceptions;
 using KayraExport.Microservices.BuildingBlocks.Shared.Domain.Response;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
+using Rebus.Bus;
 using System.Net;
 
-namespace KayraExport.Microservices.BuildingBlocks.Shared.Application.Mİddlewares
+namespace KayraExport.Microservices.BuildingBlocks.Shared.Application.Middlewares
 {
-    public class GlobalErrorHandlerMiddleware(RequestDelegate next)
+    public class GlobalErrorHandlerMiddleware(RequestDelegate next, string serviceName)
     {
-        public async Task Invoke(HttpContext context)
+        public async Task Invoke(HttpContext context, IBus bus)
         {
             try
             {
@@ -16,13 +20,33 @@ namespace KayraExport.Microservices.BuildingBlocks.Shared.Application.Mİddlewar
             }
             catch (ValidatorException exception)
             {
-                // TODO -> Bu kısmı logla.
+                await TrySendLogEvent(bus, exception.Message, LogLevelEnum.Error, "Validation failed", serviceName);
                 await HandleValidatorExceptionAsync(context, exception);
             }
             catch (Exception exception)
             {
-                // TODO -> Bu kısmı logla.
+                await TrySendLogEvent(bus, exception.Message, LogLevelEnum.Error, "Unexpected error occured", serviceName);
                 await HandleExceptionAsync(context, exception);
+            }
+        }
+
+        private async Task TrySendLogEvent(IBus bus, string details, LogLevelEnum level, string message, string serviceName)
+        {
+            try 
+            {
+                await bus.Send(new LogMessageEvent
+                {
+                    CreatedAt = DateTimeHelper.GetNowByTurkiyeTimeZone(),
+                    ExceptionDetails = details,
+                    LogLevel = level,
+                    Message = message,
+                    ServiceName = serviceName
+                });
+            } 
+            catch 
+            {
+                // Message broker kapalıysa hatayı yut (Silently Fail), 
+                // böylece sistem asıl dönmesi gereken standart API Response'u dönmeye devam edebilir.
             }
         }
 

@@ -22,6 +22,13 @@ namespace KayraExport.Microservices.Services.Product.Infrastructure
                 x.Assembly = typeof(IProductRepository).Assembly;
                 x.ContextType = typeof(ProductDbContext);
             });
+
+            services.AddJwtAuthentication(x =>
+            {
+                x.Issuer = EnvironmentHelper.JwtIssuer;
+                x.Audience = EnvironmentHelper.JwtAudience;
+                x.SecurityKey = EnvironmentHelper.JwtSecurityKey;
+            });
         }
     }
 }
