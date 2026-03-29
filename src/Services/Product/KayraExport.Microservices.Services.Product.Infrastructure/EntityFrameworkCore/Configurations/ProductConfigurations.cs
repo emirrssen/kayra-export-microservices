@@ -11,6 +11,7 @@ namespace KayraExport.Microservices.Services.Product.Infrastructure.EntityFramew
             builder.ToTable("products", SchemasConst.Product, x =>
             {
                 x.HasCheckConstraint("CK_Products_Price_NotNegative", @"""Price"" >= 0");
+                x.HasCheckConstraint("CK_Products_StockQuantity_NotNegative", @"""StockQuantity"" >= 0");
             });
 
             builder.Property(x => x.Price)
