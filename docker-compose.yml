@@ -58,7 +58,7 @@ services:
       dockerfile: src/Services/Auth/KayraExport.Microservices.Services.Auth.API/Dockerfile
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - KAYRA_POSTGRESQL_CNN=User ID=kayra_admin;Password=kayra_password;Host=kayra_postgres;Port=5432;Database=KayraAuthDb;Pooling=true;
+      - KAYRA_POSTGRESQL_CNN=User ID=kayra_admin;Password=kayra_password;Host=kayra_postgres;Port=5432;Database=KayraProductDb;Pooling=true;
       - KAYRA_RABBITMQ_CNN=amqp://kayra_rmq:kayra_rmq_pass@kayra_rabbitmq:5672/
       - KAYRA_JWT_ISSUER=${KAYRA_JWT_ISSUER:-kayra}
       - KAYRA_JWT_AUDIENCE=${KAYRA_JWT_AUDIENCE:-kayra}
