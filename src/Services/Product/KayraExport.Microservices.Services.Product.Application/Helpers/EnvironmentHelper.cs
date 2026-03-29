@@ -32,5 +32,10 @@
         /// RabbitMq bağlantısının yapılabilmesi için connection string değeridir.
         /// </summary>
         public static string RabbitMqConnectionString => GetEnvVariable("KAYRA_RABBITMQ_CNN");
+
+        /// <summary>
+        /// Redşs bağlantısının yapılabilmesi için connection string değeridir.
+        /// </summary>
+        public static string RedisConnectionString => GetEnvVariable("KAYRA_REDIS_CNN");
     }
 }

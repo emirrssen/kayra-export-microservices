@@ -2,12 +2,15 @@ using KayraExport.Microservices.BuildingBlocks.Shared.Application.Abstraction.Me
 using KayraExport.Microservices.BuildingBlocks.Shared.Application.Services.Abstract;
 using KayraExport.Microservices.BuildingBlocks.Shared.Domain.Response;
 using KayraExport.Microservices.Services.Product.Application.Repositories.PostgreSql;
+using KayraExport.Microservices.Services.Product.Domain.Consts;
+using Microsoft.Extensions.Caching.Distributed;
 
 namespace KayraExport.Microservices.Services.Product.Application.CQRS.Product.Commands.Delete;
 
 public class Handler(
     ITransactionService transactionService,
-    IProductRepository productRepository
+    IProductRepository productRepository,
+    IDistributedCache cache
 ) : CommandHandlerBase<Command>
 {
     public override async Task<BaseResponse> Handle(Command request, CancellationToken cancellationToken)
@@ -28,6 +31,9 @@ public class Handler(
         }
 
         await transactionService.CommitTransactionAsync();
+
+        await cache.RemoveAsync(CacheKeyConst.ProductsCacheKey, cancellationToken);
+    
         return OkResponse();
     }
 }

@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 using Commands = KayraExport.Microservices.Services.Product.Application.CQRS.Product.Commands;
+using Queries = KayraExport.Microservices.Services.Product.Application.CQRS.Product.Queries;
 
 namespace KayraExport.Microservices.Services.Product.API.Controllers
 {
@@ -25,5 +26,9 @@ namespace KayraExport.Microservices.Services.Product.API.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAsync([FromRoute] long id)
             => await ExecuteAsync(new Commands.Delete.Command { Id = id });
+
+        [HttpGet]
+        public async Task<IActionResult> GetAllAsync([FromQuery] Queries.GetAll.Query query)
+            => await ExecuteAsync(query);
     }
 }

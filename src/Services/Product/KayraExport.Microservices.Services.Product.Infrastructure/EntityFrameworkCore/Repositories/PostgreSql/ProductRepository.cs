@@ -20,5 +20,13 @@ namespace KayraExport.Microservices.Services.Product.Infrastructure.EntityFramew
         public async Task InsertAsync(Domain.Entities.Product product) => await Products.AddAsync(product);
         public async Task UpdateAsync(Domain.Entities.Product product) => await Task.FromResult(Products.Update(product));
         public async Task DeleteAsync(Domain.Entities.Product product) => await Task.FromResult(Products.Remove(product));
+
+        public async Task<IEnumerable<Domain.Entities.Product>> GetAllAsync()
+        {
+            var query = Products.AsQueryable();
+            query.AsNoTrackingWithIdentityResolution();
+
+            return await query.Where(x => x.DeletedAt == null).ToListAsync();
+        }
     }
 }

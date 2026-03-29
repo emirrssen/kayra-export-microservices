@@ -6,5 +6,6 @@ namespace KayraExport.Microservices.Services.Product.Application.Repositories.Po
         Task InsertAsync(Domain.Entities.Product product);
         Task UpdateAsync(Domain.Entities.Product product);
         Task DeleteAsync(Domain.Entities.Product product);
+        Task<IEnumerable<Domain.Entities.Product>> GetAllAsync();
     }
 }

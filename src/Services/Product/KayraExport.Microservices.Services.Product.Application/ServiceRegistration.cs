@@ -14,6 +14,11 @@ namespace KayraExport.Microservices.Services.Product.Application
                 x.ConnectionString = EnvironmentHelper.RabbitMqConnectionString;
                 x.CustomRoutings = [ new() { Type = typeof(ProductCreatedEvent), DestinationAddress = "products-queue" } ];
             });
+
+            services.AddStackExchangeRedisCache(options =>
+            {
+                options.Configuration = EnvironmentHelper.RedisConnectionString;
+            });
         }
     }
 }
