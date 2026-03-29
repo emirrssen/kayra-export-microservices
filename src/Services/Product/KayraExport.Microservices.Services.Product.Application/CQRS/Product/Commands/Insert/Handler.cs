@@ -1,13 +1,17 @@
 using KayraExport.Microservices.BuildingBlocks.Shared.Application.Abstraction.MediatR.Command;
+using KayraExport.Microservices.BuildingBlocks.Shared.Application.Helpers;
 using KayraExport.Microservices.BuildingBlocks.Shared.Application.Services.Abstract;
 using KayraExport.Microservices.BuildingBlocks.Shared.Domain.Response;
 using KayraExport.Microservices.Services.Product.Application.Repositories.PostgreSql;
+using KayraExport.Microservices.Services.Product.Domain.Events;
+using Rebus.Bus;
 
 namespace KayraExport.Microservices.Services.Product.Application.CQRS.Product.Commands.Insert;
 
 public class Handler(
     ITransactionService transactionService,
-    IProductRepository productRepository
+    IProductRepository productRepository,
+    IBus bus
 ) : CommandHandlerBase<Command>
 {
     public override async Task<BaseResponse> Handle(Command request, CancellationToken cancellationToken)
@@ -31,6 +35,13 @@ public class Handler(
         }
 
         await transactionService.CommitTransactionAsync();
+
+        await bus.Send(new ProductCreatedEvent
+        {
+            CreatedAt = DateTimeHelper.GetNowByTurkiyeTimeZone(),
+            CreatedProductId = product.Id
+        });
+
         return CreatedResponse();
     }
 }
