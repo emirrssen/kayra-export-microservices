@@ -8,7 +8,14 @@ namespace KayraExport.Microservices.Services.Product.Infrastructure.EntityFramew
     {
         public void Configure(EntityTypeBuilder<Domain.Entities.Product> builder)
         {
-            builder.ToTable("products", SchemasConst.Product);
+            builder.ToTable("products", SchemasConst.Product, x =>
+            {
+                x.HasCheckConstraint("CK_Products_Price_NotNegative", @"""Price"" >= 0");
+            });
+
+            builder.Property(x => x.Price)
+                   .IsRequired()
+                   .HasColumnType("decimal(18,2)");
         }
     }
 }
