@@ -39,8 +39,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KayraExport.Microservices.S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KayraExport.Microservices.Services.Log.Core", "src\Services\Log\KayraExport.Microservices.Services.Log.Core\KayraExport.Microservices.Services.Log.Core.csproj", "{B3EFDD05-6396-44E2-8341-E3960561898C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KayraExport.Microservices.Services.Log.Infrastructure", "src\Services\Log\KayraExport.Microservices.Services.Log.Infrastructure\KayraExport.Microservices.Services.Log.Infrastructure.csproj", "{82A38E91-6137-4279-975A-BD1E24B10ED4}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KayraExport.Microservices.Services.Log.API", "src\Services\Log\KayraExport.Microservices.Services.Log.API\KayraExport.Microservices.Services.Log.API.csproj", "{EBA1DC14-7408-4F35-84B4-2E3885A97BFB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KayraExport.Microservices.BuildingBlocks.Shared.Domain", "src\BuildingBlocks\KayraExport.Microservices.BuildingBlocks.Shared.Domain\KayraExport.Microservices.BuildingBlocks.Shared.Domain.csproj", "{A059FFF9-4A4A-49EB-AFC2-7B5C3F2F5912}"
@@ -95,10 +93,6 @@ Global
 		{B3EFDD05-6396-44E2-8341-E3960561898C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B3EFDD05-6396-44E2-8341-E3960561898C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B3EFDD05-6396-44E2-8341-E3960561898C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{82A38E91-6137-4279-975A-BD1E24B10ED4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{82A38E91-6137-4279-975A-BD1E24B10ED4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{82A38E91-6137-4279-975A-BD1E24B10ED4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{82A38E91-6137-4279-975A-BD1E24B10ED4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EBA1DC14-7408-4F35-84B4-2E3885A97BFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EBA1DC14-7408-4F35-84B4-2E3885A97BFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EBA1DC14-7408-4F35-84B4-2E3885A97BFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -129,7 +123,6 @@ Global
 		{7D8856C7-F921-43BD-8EE1-C61C3C4E3547} = {363EBA63-5E6E-4397-8E85-33D8D44EFC1F}
 		{605C1F1D-83CC-4673-AB77-9A8B47A85AAE} = {363EBA63-5E6E-4397-8E85-33D8D44EFC1F}
 		{B3EFDD05-6396-44E2-8341-E3960561898C} = {09855581-4E34-4902-98CA-151A7083F0F1}
-		{82A38E91-6137-4279-975A-BD1E24B10ED4} = {09855581-4E34-4902-98CA-151A7083F0F1}
 		{EBA1DC14-7408-4F35-84B4-2E3885A97BFB} = {09855581-4E34-4902-98CA-151A7083F0F1}
 		{A059FFF9-4A4A-49EB-AFC2-7B5C3F2F5912} = {74EFCFE1-4DA3-4EF5-8EEE-C13259578F8D}
 	EndGlobalSection

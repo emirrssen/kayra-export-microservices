@@ -51,6 +51,88 @@ services:
         - kayra_network
       restart: unless-stopped
 
+  kayra_auth_api:
+    container_name: kayra_auth_api
+    build:
+      context: .
+      dockerfile: src/Services/Auth/KayraExport.Microservices.Services.Auth.API/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - KAYRA_POSTGRESQL_CNN=User ID=kayra_admin;Password=kayra_password;Host=kayra_postgres;Port=5432;Database=KayraAuthDb;Pooling=true;
+      - KAYRA_RABBITMQ_CNN=amqp://kayra_rmq:kayra_rmq_pass@kayra_rabbitmq:5672/
+      - KAYRA_JWT_ISSUER=${KAYRA_JWT_ISSUER:-kayra}
+      - KAYRA_JWT_AUDIENCE=${KAYRA_JWT_AUDIENCE:-kayra}
+      - KAYRA_JWT_SECURITY_KEY=${KAYRA_JWT_SECURITY_KEY:-your_super_secret_key_1234567890!}
+      - KAYRA_JWT_ACCESS_TOKEN_EXPIRATION=60
+      - KAYRA_JWT_REFRESH_TOKEN_EXPIRATION=1440
+    ports:
+      - "5095:8080"
+    networks:
+      - kayra_network
+    depends_on:
+      - kayra_postgres
+      - kayra_rabbitmq
+    restart: unless-stopped
+
+  kayra_product_api:
+    container_name: kayra_product_api
+    build:
+      context: .
+      dockerfile: src/Services/Product/KayraExport.Microservices.Services.Product.API/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - KAYRA_POSTGRESQL_CNN=User ID=kayra_admin;Password=kayra_password;Host=kayra_postgres;Port=5432;Database=KayraProductDb;Pooling=true;
+      - KAYRA_RABBITMQ_CNN=amqp://kayra_rmq:kayra_rmq_pass@kayra_rabbitmq:5672/
+      - KAYRA_REDIS_CNN=kayra_redis:6379,abortConnect=false
+      - KAYRA_JWT_ISSUER=${KAYRA_JWT_ISSUER:-kayra}
+      - KAYRA_JWT_AUDIENCE=${KAYRA_JWT_AUDIENCE:-kayra}
+      - KAYRA_JWT_SECURITY_KEY=${KAYRA_JWT_SECURITY_KEY:-your_super_secret_key_1234567890!}
+    ports:
+      - "5144:8080"
+    networks:
+      - kayra_network
+    depends_on:
+      - kayra_postgres
+      - kayra_rabbitmq
+      - kayra_redis
+    restart: unless-stopped
+
+  kayra_log_api:
+    container_name: kayra_log_api
+    build:
+      context: .
+      dockerfile: src/Services/Log/KayraExport.Microservices.Services.Log.API/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - KAYRA_RABBITMQ_CNN=amqp://kayra_rmq:kayra_rmq_pass@kayra_rabbitmq:5672/
+      - Serilog__WriteTo__1__Args__serverUrl=http://kayra_seq:80
+    ports:
+      - "5128:8080"
+    networks:
+      - kayra_network
+    depends_on:
+      - kayra_rabbitmq
+      - kayra_seq
+    restart: unless-stopped
+
+  kayra_gateway_api:
+    container_name: kayra_gateway_api
+    build:
+      context: .
+      dockerfile: src/Gateway/KayraExport.Microservices.Gateway.API_Gateway/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ReverseProxy__Clusters__product-cluster__Destinations__destination1__Address=http://kayra_product_api:8080
+      - ReverseProxy__Clusters__auth-cluster__Destinations__destination1__Address=http://kayra_auth_api:8080
+    ports:
+      - "5000:8080"
+    networks:
+      - kayra_network
+    depends_on:
+      - kayra_auth_api
+      - kayra_product_api
+    restart: unless-stopped
+
 networks:
   kayra_network:
     driver: bridge

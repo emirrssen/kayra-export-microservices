@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\KayraExport.Microservices.Services.Log.Infrastructure\KayraExport.Microservices.Services.Log.Infrastructure.csproj" />
+    <ProjectReference Include="..\KayraExport.Microservices.Services.Log.Core\KayraExport.Microservices.Services.Log.Core.csproj" />
   </ItemGroup>
 
 </Project>
