@@ -1,4 +1,5 @@
-﻿using KayraExport.Microservices.Services.Auth.Application.Helpers;
+﻿using KayraExport.Microservices.BuildingBlocks.Shared.Application.Helpers;
+using KayraExport.Microservices.Services.Auth.Application.Helpers;
 using KayraExport.Microservices.Services.Auth.Application.Services.Abstracts;
 using KayraExport.Microservices.Services.Auth.Domain.DTOs.Token;
 using KayraExport.Microservices.Services.Auth.Domain.Entities;

@@ -1,4 +1,4 @@
-﻿using KayraExport.Microservices.Services.Product.Application.Repositories.PostgreSql;
+using KayraExport.Microservices.Services.Product.Application.Repositories.PostgreSql;
 using Microsoft.EntityFrameworkCore;
 
 namespace KayraExport.Microservices.Services.Product.Infrastructure.EntityFrameworkCore.Repositories.PostgreSql
@@ -13,5 +13,12 @@ namespace KayraExport.Microservices.Services.Product.Infrastructure.EntityFramew
             Context = context;
             Products = context.Set<Domain.Entities.Product>();
         }
+
+        public async Task<Domain.Entities.Product?> GetByIdAsync(long id)
+            => await Products.FirstOrDefaultAsync(x => x.Id == id);
+
+        public async Task InsertAsync(Domain.Entities.Product product) => await Products.AddAsync(product);
+        public async Task UpdateAsync(Domain.Entities.Product product) => await Task.FromResult(Products.Update(product));
+        public async Task DeleteAsync(Domain.Entities.Product product) => await Task.FromResult(Products.Remove(product));
     }
 }

@@ -1,4 +1,4 @@
-﻿using KayraExport.Microservices.BuildingBlocks.Shared.Domain.Entities;
+using KayraExport.Microservices.BuildingBlocks.Shared.Domain.Entities;
 
 namespace KayraExport.Microservices.Services.Product.Domain.Entities
 {
@@ -14,6 +14,18 @@ namespace KayraExport.Microservices.Services.Product.Domain.Entities
             if (string.IsNullOrWhiteSpace(name)) throw new ArgumentNullException("İsmin belirtilmesi zorunludur");
             if (price < 0) throw new ArgumentOutOfRangeException("Fiyat değeri 0'dan küçük olamaz");
             if (stockQuantity < 0) throw new ArgumentOutOfRangeException($"Stok miktarı 0'dan küçük olamaz");
+
+            Name = name;
+            Description = description;
+            Price = price;
+            StockQuantity = stockQuantity;
+        }
+
+        public void Update(string name, string? description, decimal price, int stockQuantity)
+        {
+            if (string.IsNullOrWhiteSpace(name)) throw new ArgumentNullException("İsmin belirtilmesi zorunludur");
+            if (price < 0) throw new ArgumentOutOfRangeException("Fiyat değeri 0'dan küçük olamaz");
+            if (stockQuantity < 0) throw new ArgumentOutOfRangeException("Stok miktarı 0'dan küçük olamaz");
 
             Name = name;
             Description = description;

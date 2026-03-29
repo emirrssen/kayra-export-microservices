@@ -11,4 +11,10 @@
     <ProjectReference Include="..\KayraExport.Microservices.Services.Product.Domain\KayraExport.Microservices.Services.Product.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="CQRS\Product\Commands\Insert\" />
+    <Folder Include="CQRS\Product\Commands\Delete\" />
+    <Folder Include="CQRS\Product\Commands\Update\" />
+  </ItemGroup>
+
 </Project>
